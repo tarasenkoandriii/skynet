@@ -18,6 +18,7 @@ export async function smoke({base,environment,revision,fetcher=fetch,local=false
     if(route==='/api/health') {
       if(!response.headers.get('content-type')?.includes('application/json') || !response.headers.get('cache-control')?.includes('no-store'))throw new Error('Health must be uncached JSON');
       const data=JSON.parse(body);
+      if(!/^v24\./.test(data.node_version||''))throw new Error('Node 24 runtime required');
       if(data.ok!==true||data.service!=='narodne-ppo-landings'||data.environment!==environment||data.revision!==revision||data.release_stage!==19||data.informational_only!==true||data.payment_enabled!==false||data.qr_enabled!==false)throw new Error('Health contract mismatch');
     } else if(route==='/robots.txt') {
       if(environment==='production' ? !body.includes(`Sitemap: ${expectedOrigin}/sitemap.xml`) : !/Disallow: \/(?:\r?\n|$)/.test(body))throw new Error('Robots scope mismatch');
