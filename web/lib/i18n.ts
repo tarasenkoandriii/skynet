@@ -6,6 +6,8 @@ import pl from '@/content/locales/pl.json';
 import fr from '@/content/locales/fr.json';
 export const locales=['uk','en','de','pl','fr'] as const;
 export type Locale=typeof locales[number];
+export const languageNames:Record<Locale,string>={uk:'Українська',en:'English',de:'Deutsch',pl:'Polski',fr:'Français'};
+export const languageFlags:Record<Locale,string>={uk:'🇺🇦',en:'🇬🇧',de:'🇩🇪',pl:'🇵🇱',fr:'🇫🇷'};
 export type Messages=Record<keyof typeof en,string>;
 export type PageKind='home'|'support'|'investors';
 const catalogues:Record<Locale,Messages>={uk,en,de,pl,fr};
