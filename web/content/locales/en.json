@@ -73,7 +73,7 @@
   "shareBody": "Share the project link together with its current stage. Describe acoustic detection as a research direction; field effectiveness has not yet been established.",
   "shareAction": "Copy project link",
   "shareSuccess": "Link copied. Thank you for sharing the project.",
-  "shareFallback": "Copy this page's address from your browser's address bar.",
+  "shareFallback": "Automatic copying is unavailable. Copy the address of the project link below.",
   "understandLabel": "UNDERSTAND",
   "understandTitle": "Understand the next test",
   "understandBody": "Bench evaluation should establish how reliably one node records and processes signals. Noise, false positives and coordination between nodes need separate evaluation.",
@@ -167,5 +167,6 @@
   "conceptIllustrationNote": "Concept illustration · not a prototype photograph or measured results.",
   "nodeIllustrationAlt": "An artistic acoustic-node concept with luminous waves against a dark background.",
   "signalIllustrationAlt": "An abstract acoustic signal visualized as green and cyan light filaments.",
-  "investorStageNote": "Next milestone: bench tests with documented conditions and results."
+  "investorStageNote": "Next milestone: bench tests with documented conditions and results.",
+  "shareLinkLabel": "Open the project page"
 }

@@ -73,7 +73,7 @@
   "shareBody": "Partagez le lien en expliquant la phase actuelle. La détection acoustique est une piste de recherche ; son efficacité sur le terrain n’est pas encore établie.",
   "shareAction": "Copier le lien du projet",
   "shareSuccess": "Lien copié. Merci de partager le projet.",
-  "shareFallback": "Copiez l'adresse de cette page depuis la barre d'adresse du navigateur.",
+  "shareFallback": "La copie automatique est indisponible. Copiez l’adresse du lien vers le projet ci-dessous.",
   "understandLabel": "COMPRENDRE",
   "understandTitle": "Comprendre le prochain essai",
   "understandBody": "L’évaluation sur banc doit établir la fiabilité de l’enregistrement et du traitement des signaux par un nœud. Le bruit, les fausses alertes et la coordination entre nœuds nécessitent une évaluation distincte.",
@@ -167,5 +167,6 @@
   "conceptIllustrationNote": "Illustration conceptuelle · ni photographie du prototype ni résultats de mesure.",
   "nodeIllustrationAlt": "Concept artistique d’un nœud acoustique entouré d’ondes lumineuses sur fond sombre.",
   "signalIllustrationAlt": "Signal acoustique abstrait représenté par des filaments lumineux verts et turquoise.",
-  "investorStageNote": "Prochaine étape : essais sur banc avec des conditions et des résultats documentés."
+  "investorStageNote": "Prochaine étape : essais sur banc avec des conditions et des résultats documentés.",
+  "shareLinkLabel": "Ouvrir la page du projet"
 }

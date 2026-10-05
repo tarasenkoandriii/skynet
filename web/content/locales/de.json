@@ -73,7 +73,7 @@
   "shareBody": "Teilen Sie den Projektlink mit einer Erklärung des aktuellen Stands. Akustische Erkennung ist ein Forschungsansatz; die Wirksamkeit im Feld ist noch nicht belegt.",
   "shareAction": "Projektlink kopieren",
   "shareSuccess": "Link kopiert. Vielen Dank, dass Sie das Projekt teilen.",
-  "shareFallback": "Kopieren Sie die Adresse dieser Seite aus der Adresszeile Ihres Browsers.",
+  "shareFallback": "Automatisches Kopieren ist nicht verfügbar. Kopieren Sie die Adresse des Projektlinks unten.",
   "understandLabel": "VERSTEHEN",
   "understandTitle": "Den nächsten Test verstehen",
   "understandBody": "Prüfstandtests sollen zeigen, wie zuverlässig ein Knoten Signale aufzeichnet und verarbeitet. Geräusche, Fehlalarme und das Zusammenwirken von Knoten müssen gesondert bewertet werden.",
@@ -167,5 +167,6 @@
   "conceptIllustrationNote": "Konzeptillustration · kein Foto eines Prototyps und keine Messergebnisse.",
   "nodeIllustrationAlt": "Künstlerisches Konzept eines akustischen Knotens mit leuchtenden Wellen vor dunklem Hintergrund.",
   "signalIllustrationAlt": "Abstrakte Darstellung eines akustischen Signals aus grünen und türkisfarbenen Lichtfäden.",
-  "investorStageNote": "Nächster Schritt: Prüfstandtests mit dokumentierten Bedingungen und Ergebnissen."
+  "investorStageNote": "Nächster Schritt: Prüfstandtests mit dokumentierten Bedingungen und Ergebnissen.",
+  "shareLinkLabel": "Projektseite öffnen"
 }

@@ -73,7 +73,7 @@
   "shareBody": "Udostępnij link wraz z wyjaśnieniem obecnego etapu. Detekcja akustyczna jest kierunkiem badawczym; skuteczność w terenie nie została jeszcze ustalona.",
   "shareAction": "Skopiuj link do projektu",
   "shareSuccess": "Link skopiowany. Dziękujemy za udostępnienie projektu.",
-  "shareFallback": "Skopiuj adres tej strony z paska adresu przeglądarki.",
+  "shareFallback": "Automatyczne kopiowanie jest niedostępne. Skopiuj adres poniższego linku do projektu.",
   "understandLabel": "ZROZUM",
   "understandTitle": "Zrozumieć kolejny test",
   "understandBody": "Ocena stanowiskowa ma pokazać, jak niezawodnie jeden węzeł nagrywa i przetwarza sygnały. Hałas, fałszywe alarmy i współpraca węzłów wymagają osobnej oceny.",
@@ -167,5 +167,6 @@
   "conceptIllustrationNote": "Ilustracja koncepcyjna · nie jest zdjęciem prototypu ani wynikiem pomiarów.",
   "nodeIllustrationAlt": "Artystyczna koncepcja węzła akustycznego ze świetlnymi falami na ciemnym tle.",
   "signalIllustrationAlt": "Abstrakcyjny sygnał akustyczny przedstawiony za pomocą zielonych i turkusowych włókien światła.",
-  "investorStageNote": "Następny krok: testy stanowiskowe z udokumentowanymi warunkami i wynikami."
+  "investorStageNote": "Następny krok: testy stanowiskowe z udokumentowanymi warunkami i wynikami.",
+  "shareLinkLabel": "Otwórz stronę projektu"
 }
