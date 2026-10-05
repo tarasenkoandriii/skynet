@@ -105,3 +105,5 @@ section{padding-block:72px}
 
 /* Keep investor headline clauses together and balance natural wrapping. */
 .hero-investors .headline-line{text-wrap:balance}
+
+.share-control .share-target{display:inline-flex;align-items:center;gap:12px;min-height:44px;margin:0;padding:8px 0}
