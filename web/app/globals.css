@@ -78,3 +78,12 @@ section{padding-block:72px}
 .support-card .share-control>.btn{width:100%}
 .support-card .text-link{min-height:48px;display:flex;align-items:center;gap:12px}
 }
+
+/* Long translated status labels must stay inside their definition cells. */
+.investor-brief dt,.investor-brief dd{min-width:0;overflow-wrap:anywhere;hyphens:auto}
+@media(max-width:380px){
+.illustrated-brief dl{grid-template-columns:minmax(0,1fr);margin-top:16px}
+.investor-brief dl>div{padding:14px 0}
+.illustrated-brief dt{font-size:12px}
+.illustrated-brief dd{font-size:15px;line-height:1.6}
+}
