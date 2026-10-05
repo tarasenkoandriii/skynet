@@ -94,3 +94,11 @@ section{padding-block:72px}
 .grid .card-index{grid-column:1 / -1;margin:0}
 .grid .card h3,.grid .card p{min-width:0}
 }
+
+/* Give mobile navigation links a comfortable touch area. */
+@media(max-width:760px){
+.header-controls>nav:first-child a{display:inline-flex;align-items:center;min-width:44px;min-height:44px}
+.footer-wordmark{display:inline-flex;align-items:center;min-height:44px}
+.footer-bottom nav{flex-wrap:wrap;gap:8px 24px}
+.footer-bottom nav a{display:inline-flex;align-items:center;min-width:44px;min-height:44px;padding-block:10px;font-size:13px}
+}
