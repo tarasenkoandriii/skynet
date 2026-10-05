@@ -102,3 +102,6 @@ section{padding-block:72px}
 .footer-bottom nav{flex-wrap:wrap;gap:8px 24px}
 .footer-bottom nav a{display:inline-flex;align-items:center;min-width:44px;min-height:44px;padding-block:10px;font-size:13px}
 }
+
+/* Keep investor headline clauses together and balance natural wrapping. */
+.hero-investors .headline-line{text-wrap:balance}
