@@ -90,3 +90,5 @@ Public repository: https://github.com/tarasenkoandriii/skynet . Production branc
 ## Multilingual landing release
 
 Ukrainian is the unprefixed default. EN/DE/PL/FR have explicit URL prefixes; language selection preserves the current landing. English message keys are shared across all five catalogues. Review copy changes together across languages, including legal/payment notices. Translation tests reject missing, empty or extra keys and Ukrainian text in foreign catalogues. Do not enable transactions as part of a translation/design release.
+
+Social-preview acceptance checks localized Open Graph locale/canonical image tags, Twitter summary card, the browser SVG and the 192px PNG brandmark. The smoke suite now covers 24 routes; previews require a fresh crawl by each external platform, whose cache timing is not controlled by this release.
