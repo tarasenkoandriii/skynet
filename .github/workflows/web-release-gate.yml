@@ -1,0 +1,51 @@
+name: Web release gate
+on:
+  push:
+    paths: ['web/**', '.github/workflows/web-release-gate.yml']
+  pull_request:
+    paths: ['web/**', '.github/workflows/web-release-gate.yml']
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        environment: [preview, production]
+    env:
+      VERCEL_ENV: ${{ matrix.environment }}
+      NEXT_PUBLIC_SITE_URL: https://ci.invalid
+      CAMPAIGN_MODE: DISABLED
+      PAYMENT_STATUS: DISABLED
+      LEGAL_PAYMENT_APPROVED: 'false'
+      CONTACT_ENDPOINT_ENABLED: 'false'
+      HOSTING_PLAN: pro
+      VERCEL_GIT_COMMIT_SHA: ${{ github.sha }}
+    defaults:
+      run:
+        working-directory: web
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+          cache-dependency-path: web/package-lock.json
+      - run: npm ci
+      - run: npm audit --audit-level=moderate
+      - run: npm run test:deployment
+      - run: npm run typecheck
+      - run: npm run build
+      - name: Smoke the built environment locally
+        run: |
+          npm run start -- --hostname 127.0.0.1 > /tmp/skynet-next.log 2>&1 &
+          server_pid=$!
+          trap 'kill "$server_pid"' EXIT
+          ready=false
+          for attempt in $(seq 1 30); do
+            if curl --fail --silent http://127.0.0.1:3000/api/health > /dev/null; then ready=true; break; fi
+            sleep 1
+          done
+          test "$ready" = true
+          SMOKE_ALLOW_LOCAL=true SMOKE_CANONICAL_ORIGIN=https://ci.invalid npm run smoke -- http://127.0.0.1:3000 "$VERCEL_ENV" "$VERCEL_GIT_COMMIT_SHA"

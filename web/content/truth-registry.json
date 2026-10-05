@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "registry_version": "2026-10-05.stage9.1",
+  "status": "APPROVED_FOR_RUNTIME_CONTRACT",
+  "claims": [
+    {"claim_id":"STAGE-001","public_copy_id":"STAGE-001.PUBLIC.01","audience":["CROWDFUNDING","INVESTOR"],"display_policy":"PUBLIC","status":"VERIFIED","source_id":"RELEASE_STATUS","evidence_id":"RELEASE_STATUS.v3.34","public_copy":"Current release: Stage 0 bench validation with one node."},
+    {"claim_id":"SW-001","public_copy_id":"SW-001.PUBLIC.01","audience":["CROWDFUNDING","INVESTOR"],"display_policy":"PUBLIC","status":"VERIFIED","source_id":"RELEASE_STATUS","evidence_id":"RELEASE_STATUS.v3.34","public_copy":"Software validation: PASS 20 / FAIL 0 / SKIP 1, with source/version shown."},
+    {"claim_id":"HW-001","public_copy_id":"HW-001.PUBLIC.01","audience":["CROWDFUNDING","INVESTOR"],"display_policy":"HIDDEN","status":"FIELD_PENDING","source_id":"Gate 0","evidence_id":null,"public_copy":""},
+    {"claim_id":"FIELD-001","public_copy_id":"FIELD-001.PUBLIC.01","audience":["CROWDFUNDING","INVESTOR"],"display_policy":"HIDDEN","status":"FIELD_PENDING","source_id":"field test pending","evidence_id":null,"public_copy":""},
+    {"claim_id":"T3-001","public_copy_id":"T3-001.PUBLIC.01","audience":["CROWDFUNDING","INVESTOR"],"display_policy":"CAUTIOUS","status":"FIELD_PENDING","source_id":"roadmap","evidence_id":null,"public_copy":"Future roadmap: T3/smartphone mass-network contour; not part of the current validated deployment."},
+    {"claim_id":"PRIV-001","public_copy_id":"PRIV-001.PUBLIC.01","audience":["CROWDFUNDING","INVESTOR"],"display_policy":"CAUTIOUS","status":"LEGAL_PENDING","source_id":"architecture + legal review","evidence_id":null,"public_copy":"The architecture is designed around local processing and data minimization; legal/privacy claims remain subject to review."},
+    {"claim_id":"ECON-001","public_copy_id":"ECON-001.PUBLIC.01","audience":["CROWDFUNDING","INVESTOR"],"display_policy":"CAUTIOUS","status":"CALCULATED","source_id":"BOM/version","evidence_id":"BOM.v2.4","public_copy":"Prototype BOM is a calculated prototype figure and is not a deployed commercial cost."},
+    {"claim_id":"ECON-002","public_copy_id":"ECON-002.PUBLIC.01","audience":["INVESTOR"],"display_policy":"CAUTIOUS","status":"BUSINESS_PENDING","source_id":"target model","evidence_id":null,"public_copy":"Commercial COGS is a target model pending business validation."},
+    {"claim_id":"DATA-001","public_copy_id":"DATA-001.PUBLIC.01","audience":["INVESTOR"],"display_policy":"CAUTIOUS","status":"BUSINESS_PENDING","source_id":"corpus plan","evidence_id":null,"public_copy":"Data moat is a future workstream, not a proven current advantage."}
+  ]
+}

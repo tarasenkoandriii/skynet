@@ -1,0 +1,11 @@
+import {test} from 'node:test';
+import assert from 'node:assert/strict';
+import {configurationErrors,deploymentState} from '../lib/deployment.mjs';
+const valid={VERCEL_ENV:'production',NEXT_PUBLIC_SITE_URL:'https://release.invalid',CAMPAIGN_MODE:'DISABLED',PAYMENT_STATUS:'DISABLED',LEGAL_PAYMENT_APPROVED:'false',CONTACT_ENDPOINT_ENABLED:'false',HOSTING_PLAN:'pro'};
+test('valid informational environments',()=>{for(const VERCEL_ENV of ['production','preview'])assert.deepEqual(configurationErrors({...valid,VERCEL_ENV}),[]);assert.deepEqual(configurationErrors({}),[])});
+test('deployment scopes require explicit disabled values',()=>{for(const key of ['CAMPAIGN_MODE','PAYMENT_STATUS','LEGAL_PAYMENT_APPROVED','CONTACT_ENDPOINT_ENABLED','HOSTING_PLAN','NEXT_PUBLIC_SITE_URL']){const e={...valid};delete e[key];assert.ok(configurationErrors(e).length,key)}});
+test('unsafe origins rejected',()=>{for(const url of ['http://release.invalid','https://user:pass@release.invalid','https://release.invalid/path','https://release.invalid/?q=1','https://release.invalid/#x','https://example.vercel.app','broken'])assert.ok(configurationErrors({...valid,NEXT_PUBLIC_SITE_URL:url}).length,url)});
+test('payment activation cannot bypass release lock',()=>{const e={...valid,PAYMENT_STATUS:'APPROVED',LEGAL_PAYMENT_APPROVED:'true',PAYMENT_PROVIDER:'provider',PAYMENT_CANONICAL_URL:'https://provider.invalid',CAMPAIGN_MODE:'LIVE'};assert.ok(configurationErrors(e).length);assert.equal(deploymentState(e).payment_enabled,false);assert.equal(deploymentState(e).qr_enabled,false)});
+test('Hobby requires eligibility; invalid plan/scope and obsolete flags fail',()=>{assert.ok(configurationErrors({...valid,HOSTING_PLAN:'hobby'}).length);assert.deepEqual(configurationErrors({...valid,HOSTING_PLAN:'hobby',HOBBY_NONCOMMERCIAL_APPROVED:'true'}),[]);for(const patch of [{HOSTING_PLAN:'unknown'},{VERCEL_ENV:'staging'},{PAYMENT_ENABLED:'false'},{PAYMENT_LEGAL_APPROVED:'true'},{CONTACT_ENDPOINT_ENABLED:'true'}])assert.ok(configurationErrors({...valid,...patch}).length)});
+
+test('manual CLI revision identifies artifact independently from Git',()=>{assert.equal(deploymentState({RELEASE_REVISION:'baseline-a',VERCEL_GIT_COMMIT_SHA:'git-sha'}).revision,'baseline-a');assert.equal(deploymentState({VERCEL_GIT_COMMIT_SHA:'git-sha'}).revision,'git-sha')});

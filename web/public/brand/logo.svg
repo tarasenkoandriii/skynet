@@ -1,0 +1,67 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1400 520">
+<defs>
+  <linearGradient id="blue" x1="0" y1="0" x2="1" y2="1">
+    <stop offset="0" stop-color="#59C7FF"/>
+    <stop offset="0.48" stop-color="#1677D2"/>
+    <stop offset="1" stop-color="#063A86"/>
+  </linearGradient>
+  <linearGradient id="yellow" x1="0" y1="0" x2="1" y2="1">
+    <stop offset="0" stop-color="#FFE45A"/>
+    <stop offset="1" stop-color="#F6B800"/>
+  </linearGradient>
+</defs>
+
+<!-- shield -->
+<path d="M250 28 L448 98 L448 250 C448 365 370 438 250 492 C130 438 52 365 52 250 L52 98 Z"
+      fill="#071B36" stroke="url(#blue)" stroke-width="18" stroke-linejoin="round"/>
+<!-- yellow half -->
+<path d="M250 28 L448 98 L448 250 C448 365 370 438 250 492 L250 28 Z"
+      fill="url(#yellow)" opacity=".98"/>
+<!-- blue half overlay -->
+<path d="M250 28 L52 98 L52 250 C52 365 130 438 250 492 Z"
+      fill="url(#blue)" opacity=".98"/>
+
+<!-- inner field -->
+<path d="M250 68 L408 124 L408 246 C408 334 348 395 250 440 C152 395 92 334 92 246 L92 124 Z"
+      fill="#F7FBFF" opacity=".96"/>
+
+<!-- split field -->
+<path d="M250 68 L408 124 L408 246 C408 334 348 395 250 440 Z" fill="#FFD83D"/>
+<path d="M250 68 L92 124 L92 246 C92 334 152 395 250 440 Z" fill="#1685E5"/>
+
+<!-- radar center -->
+<circle cx="250" cy="260" r="22" fill="#FFFFFF"/>
+<circle cx="250" cy="260" r="11" fill="#0B5FB7"/>
+
+<!-- radar arcs -->
+<path d="M185 260 A65 65 0 0 1 250 195" fill="none" stroke="#FFFFFF" stroke-width="15" stroke-linecap="round"/>
+<path d="M315 260 A65 65 0 0 0 250 195" fill="none" stroke="#FFFFFF" stroke-width="15" stroke-linecap="round"/>
+<path d="M140 260 A110 110 0 0 1 250 150" fill="none" stroke="#FFFFFF" stroke-width="13" stroke-linecap="round"/>
+<path d="M360 260 A110 110 0 0 0 250 150" fill="none" stroke="#FFFFFF" stroke-width="13" stroke-linecap="round"/>
+<path d="M110 260 A140 140 0 0 1 250 120" fill="none" stroke="#FFFFFF" stroke-width="11" stroke-linecap="round"/>
+<path d="M390 260 A140 140 0 0 0 250 120" fill="none" stroke="#FFFFFF" stroke-width="11" stroke-linecap="round"/>
+
+<!-- skyline -->
+<path d="M92 358 L118 358 L118 325 L132 325 L132 348 L148 348 L148 304 L163 304 L163 342
+L179 342 L179 318 L194 318 L194 350 L208 350 L208 286 L225 286 L225 346 L240 346 L240 300
+L252 300 L252 343 L270 343 L270 275 L286 275 L286 341 L301 341 L301 312 L315 312 L315 349
+L332 349 L332 292 L347 292 L347 343 L363 343 L363 320 L378 320 L378 357 L408 357 L408 390
+L92 390 Z" fill="#071B36"/>
+
+<!-- drone silhouettes -->
+<g fill="#071B36">
+  <path d="M305 166 l20 10 20-10 12 7-12 8 12 8-20-4-20 4 12-8-12-8z"/>
+  <path d="M355 205 l15 8 15-8 9 6-9 6 9 6-15-3-15 3 9-6-9-6z"/>
+  <path d="M324 226 l11 6 11-6 7 5-7 5 7 5-11-2-11 2 7-5-7-5z"/>
+</g>
+
+<!-- wordmark -->
+<g fill="#071B36" font-family="Arial, Helvetica, sans-serif">
+  <text x="500" y="270" font-size="104" font-weight="800" letter-spacing="-3">Народне ППО</text>
+  <text x="505" y="345" font-size="48" font-weight="400" letter-spacing="15" fill="#0A5DB3">SkyNet</text>
+</g>
+<g stroke="#0A5DB3" stroke-width="4">
+  <line x1="505" y1="326" x2="620" y2="326"/>
+  <line x1="800" y1="326" x2="915" y2="326"/>
+</g>
+</svg>

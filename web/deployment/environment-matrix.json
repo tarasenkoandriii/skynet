@@ -1,0 +1,57 @@
+{
+  "stage": 19,
+  "mode": "informational-only",
+  "scopes": {
+    "development": {
+      "NEXT_PUBLIC_SITE_URL": "actual HTTPS origin for this environment",
+      "CAMPAIGN_MODE": "DISABLED",
+      "PAYMENT_STATUS": "DISABLED",
+      "LEGAL_PAYMENT_APPROVED": "false",
+      "CONTACT_ENDPOINT_ENABLED": "false",
+      "PAYMENT_PROVIDER": "",
+      "PAYMENT_CANONICAL_URL": "",
+      "HOSTING_PLAN": "actual: hobby | pro | enterprise",
+      "HOBBY_NONCOMMERCIAL_APPROVED": "true only with recorded eligibility"
+    },
+    "preview": {
+      "NEXT_PUBLIC_SITE_URL": "actual HTTPS origin for this environment",
+      "CAMPAIGN_MODE": "DISABLED",
+      "PAYMENT_STATUS": "DISABLED",
+      "LEGAL_PAYMENT_APPROVED": "false",
+      "CONTACT_ENDPOINT_ENABLED": "false",
+      "PAYMENT_PROVIDER": "",
+      "PAYMENT_CANONICAL_URL": "",
+      "HOSTING_PLAN": "actual: hobby | pro | enterprise",
+      "HOBBY_NONCOMMERCIAL_APPROVED": "true only with recorded eligibility"
+    },
+    "production": {
+      "NEXT_PUBLIC_SITE_URL": "actual HTTPS origin for this environment",
+      "CAMPAIGN_MODE": "DISABLED",
+      "PAYMENT_STATUS": "DISABLED",
+      "LEGAL_PAYMENT_APPROVED": "false",
+      "CONTACT_ENDPOINT_ENABLED": "false",
+      "PAYMENT_PROVIDER": "",
+      "PAYMENT_CANONICAL_URL": "",
+      "HOSTING_PLAN": "actual: hobby | pro | enterprise",
+      "HOBBY_NONCOMMERCIAL_APPROVED": "true only with recorded eligibility"
+    }
+  },
+  "system_variables": [
+    "VERCEL_ENV",
+    "VERCEL_GIT_COMMIT_SHA"
+  ],
+  "prohibited": [
+    "PAYMENT_ENABLED",
+    "PAYMENT_LEGAL_APPROVED",
+    "NEXT_PUBLIC_* secrets"
+  ],
+  "indexing": {
+    "development": false,
+    "preview": false,
+    "production": true
+  },
+  "manual_cli_release": {
+    "RELEASE_REVISION": "Required build/runtime artifact revision for a CLI release without Git; independently scoped per deployment",
+    "project_root": "CLI deploy from web/ uses this directory as the project root"
+  }
+}
