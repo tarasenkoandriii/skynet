@@ -8,7 +8,7 @@
     "start": "next start",
     "typecheck": "tsc --noEmit",
     "release:check": "node scripts/release-check.mjs",
-    "test:deployment": "node --test scripts/deployment.test.mjs scripts/smoke.test.mjs",
+    "test:deployment": "node --test scripts/deployment.test.mjs scripts/smoke.test.mjs scripts/i18n.test.mjs",
     "smoke": "node scripts/smoke.mjs"
   },
   "dependencies": {
