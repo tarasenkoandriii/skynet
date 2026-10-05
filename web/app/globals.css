@@ -87,3 +87,10 @@ section{padding-block:72px}
 .illustrated-brief dt{font-size:12px}
 .illustrated-brief dd{font-size:15px;line-height:1.6}
 }
+
+/* Tablet card labels include translated words, not only a short number. */
+@media(min-width:761px) and (max-width:1080px){
+.grid .card{grid-template-columns:minmax(0,1fr) minmax(0,1.5fr);gap:14px 24px}
+.grid .card-index{grid-column:1 / -1;margin:0}
+.grid .card h3,.grid .card p{min-width:0}
+}
