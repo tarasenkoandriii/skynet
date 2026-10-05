@@ -79,7 +79,7 @@ Record privately: environment, domain, deployment ID, commit SHA, Node version, 
 
 ## Manual CLI deployment and rollback drill
 
-A CLI upload from `web/` uses that directory as the Vercel project root; its project setting Root Directory is empty. The repository integration described above uses `web` relative to repository root. Do not combine these two root settings.
+For this existing Git-linked project, run CLI uploads from repository root and retain its Root Directory `web`. A separately linked standalone upload from `web/` uses that directory as its project root and needs an empty Root Directory. Do not change the existing project root setting merely to perform a CLI upload.
 
 For a release without a Git repository, set `RELEASE_REVISION` explicitly at both build and runtime. It takes precedence over the Git SHA in health. Use a recorded artifact label containing the source digest; pass that exact label to smoke instead of a Git SHA. Never use a local/default revision as evidence of a live release. Configure Node 24, independent Preview/Production origins and disabled flags in the cloud project. Keep Preview protected.
 
@@ -124,3 +124,18 @@ For a missing Vercel trigger, after PR acceptance and exact-revision CI, the ope
 Use actual verified values, not these placeholders. Run the CLI in the linked team's scope. Before requesting a build, recheck that main still matches the accepted SHA and that no same-SHA Production build is already active or Ready; avoid duplicate releases. Wait for Ready, verify the deployment's source SHA and canonical-domain assignment, run Production smoke on that SHA, inspect both optimized illustration images in a browser, and record the deployment ID, CI event/run, fallback reason and previous known-good rollback target. Keep temporary test access revoked and excluded from records.
 
 A successful manual recovery does not prove automatic triggers are repaired. Verify the next reviewed change through the normal PR/main path, recording a `push` Actions event and a Production Git deployment for the new SHA. If no automatic event appears again, keep the cause unresolved and use the audited recovery procedure; do not weaken branch protection or Preview authentication.
+
+## Hosted-runner outages and release reconciliation
+
+The release gate uses the standard `ubuntu-24.04-arm` image, Node 24 and official Actions pinned by full commit SHA. Both `verify (preview)` and `verify (production)` remain mandatory, with administrator enforcement and an up-to-date branch required. ARM is the CI build host; it does not change Vercel's deployment architecture. The selected pool recovered R20 execution after x64 runner acquisition failures; it does not guarantee availability during a GitHub-wide outage.
+
+When a check is queued or cancelled, inspect its job and annotations before changing code. A runner-acquisition failure means the build never started, not that it passed or that application code failed. Consult GitHub Status and record the exact run, job and SHA. Retry an infrastructure failure once; a full rerun may be needed if partial attempts preserve stuck state. Do not repeatedly restart healthy queued work, manufacture successful checks or weaken main protection.
+
+Normal releases require the exact-revision CI and Preview acceptance above. An exceptional direct Production release before mandatory CI completion requires explicit owner approval naming the revision, destination and incomplete gate. Record actual local/build/test evidence and a safe rollback target first. Previous approvals apply only to the named release. Use the existing authenticated CLI session without extracting credentials; keep generated `.env.local` and `.vercel/` out of source and archives.
+
+For an approved direct upload, pass `RELEASE_REVISION` at both build and runtime for that deployment only. Use the full Git SHA, or a recorded source-digest label for non-Git artifacts. Do not persist this override in project environment settings. Wait for successful install, tests, optimized production build, READY and canonical alias, then run the 24-route public smoke expecting that exact revision. Record unfinished CI separately from successful Vercel build/smoke.
+
+Keep the source PR open with conditional auto-merge while mandatory checks are unfinished. Once CI succeeds and the PR merges, verify the new main SHA, main CI, fresh Git Production deployment and public smoke. A squash merge creates a different SHA even when frontend files match. Confirm the new Git deployment reports its own SHA, not the previous CLI override. Only then label the release reconciled. Rollback remains the separate procedure above and is not implied by a successful redeploy.
+
+Official runner images: https://github.com/actions/runner-images
+Service status: https://www.githubstatus.com/
