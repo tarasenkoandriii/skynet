@@ -84,3 +84,5 @@ A CLI upload from `web/` uses that directory as the Vercel project root; its pro
 For a release without a Git repository, set `RELEASE_REVISION` explicitly at both build and runtime. It takes precedence over the Git SHA in health. Use a recorded artifact label containing the source digest; pass that exact label to smoke instead of a Git SHA. Never use a local/default revision as evidence of a live release. Configure Node 24, independent Preview/Production origins and disabled flags in the cloud project. Keep Preview protected.
 
 For a first real rollback drill, create and live-test informational baseline A, then create and live-test informational candidate B with a different RELEASE_REVISION. Roll back to A, verify the production alias and re-run smoke expecting A's revision. Both artifacts must keep transactions locked. A successful drill leaves the verified baseline serving production; no intentionally unsafe deployment is needed.
+
+Public repository: https://github.com/tarasenkoandriii/skynet . Production branch: main. Vercel project Root Directory: web. Runtime: Node 24.x. Public production origin: https://narodne-ppo-skynet.vercel.app .
