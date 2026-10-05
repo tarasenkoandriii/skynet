@@ -163,5 +163,8 @@
   "pilot2Title": "Mierzalny protokół oceny",
   "pilot2Body": "Przed testami określić zbiory danych, warunki hałasu, pomiary fałszywych alarmów i kryteria akceptacji; zachować również wyniki sprzeczne z hipotezą.",
   "pilot3Title": "Zgody i odpowiedzialność",
-  "pilot3Body": "Przed pracami terenowymi uzgodnić miejsce, procedury bezpieczeństwa, przetwarzanie danych, osoby odpowiedzialne i niezbędne zezwolenia prawne."
+  "pilot3Body": "Przed pracami terenowymi uzgodnić miejsce, procedury bezpieczeństwa, przetwarzanie danych, osoby odpowiedzialne i niezbędne zezwolenia prawne.",
+  "conceptIllustrationNote": "Ilustracja koncepcyjna · nie jest zdjęciem prototypu ani wynikiem pomiarów.",
+  "nodeIllustrationAlt": "Artystyczna koncepcja węzła akustycznego ze świetlnymi falami na ciemnym tle.",
+  "signalIllustrationAlt": "Abstrakcyjny sygnał akustyczny przedstawiony za pomocą zielonych i turkusowych włókien światła."
 }

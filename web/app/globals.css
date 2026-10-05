@@ -41,3 +41,13 @@ section{padding-block:72px}
 .next-page{background:radial-gradient(ellipse at left,#78e08f0b,transparent 70%),#101a13}
 @media(min-width:761px) and (max-width:1080px){.hero{grid-template-columns:1.1fr .9fr;gap:28px}.grid{grid-template-columns:1fr}.grid .card{display:grid;grid-template-columns:36px 1fr 1.5fr;gap:20px;align-items:start}.grid .card-index{margin:5px 0 0}.grid .card h3{margin:0}.principle-list>div{grid-template-columns:28px 1fr 1.3fr;gap:20px}}
 @media(max-width:760px){.hero{padding-block:40px 48px;gap:28px}.hero h1{font-size:clamp(36px,8vw,48px);margin-block:20px 24px}.hero.hero-secondary h1{font-size:clamp(32px,6vw,42px)}.lead{font-size:16px}.actions{margin-top:24px}.btn{min-height:48px}.hero .brief-panel{padding:24px}.big-number{font-size:96px;margin-block:18px}.brief-panel h2{font-size:24px}section{padding-block:48px}.section-heading{gap:16px;margin-bottom:24px}.card{padding:24px}.card h3{font-size:21px}.roadmap li{padding:24px}.step-number{font-size:34px;margin-bottom:16px}.roadmap h3{font-size:23px;margin-top:18px}.principle-list>div{padding-block:22px}.principle-list h3{font-size:20px}.funding-status{padding:24px}.next-page h2{font-size:28px}.next-page .btn{width:100%}.footer{padding-top:36px}.faq details[open]{padding-inline:14px}}
+
+/* Generated artwork remains explicitly conceptual in every language. */
+.concept-illustration{margin:0;overflow:hidden;border:1px solid var(--line);border-radius:16px;background:#080b0d}
+.concept-illustration img{display:block;width:100%;height:auto;aspect-ratio:3/2;object-fit:contain}
+.concept-illustration figcaption{font-size:11px;line-height:1.6;color:var(--muted);padding:12px 16px;border-top:1px solid var(--line)}
+.brief-panel .concept-illustration{margin:20px 0 24px;border-radius:10px}
+.illustrated-brief .concept-illustration{margin:0 0 24px}
+.illustrated-brief dl{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));column-gap:24px}
+.illustrated-brief dd{font-size:14px}
+@media(max-width:760px){.concept-illustration figcaption{padding:10px 14px}.illustrated-brief dl{gap:0 16px}.illustrated-brief dt{font-size:11px}}
