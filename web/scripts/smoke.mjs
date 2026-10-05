@@ -13,14 +13,16 @@ export async function smoke({base,environment,revision,fetcher=fetch,local=false
   const expectedOrigin=canonical ? new URL(canonical).origin : origin.origin;
   if(canonical && (new URL(canonical).protocol!=="https:" || canonical!==expectedOrigin))throw new Error("Clean HTTPS canonical origin required");
   const headers=token?{'x-vercel-protection-bypass':token}:{};
-  const routes=[...pageRoutes,'/api/health','/robots.txt','/sitemap.xml','/checkout','/api/payment','/ru','/ru/investors'];
+  const routes=[...pageRoutes,'/api/health','/robots.txt','/sitemap.xml','/checkout','/api/payment','/ru','/ru/investors','/brandmark','/brand/site-icon.svg'];
   for(const route of routes) {
     const response=await fetcher(new URL(route,origin),{redirect:'manual',headers,signal:AbortSignal.timeout(15000)});
     const negative=['/checkout','/api/payment','/ru','/ru/investors'].includes(route);
     if(response.status!==(negative?404:200))throw new Error(`${route}: unexpected status ${response.status}`);
     if(response.headers.get('x-content-type-options')!=='nosniff' || response.headers.get('x-frame-options')!=='DENY')throw new Error(`${route}: missing security headers`);
     if(environment!=='production' && !response.headers.get('x-robots-tag')?.includes('noindex'))throw new Error(`${route}: missing noindex`);
+    if(route==='/brandmark'){const bytes=Buffer.from(await response.arrayBuffer());if(!response.headers.get('content-type')?.includes('image/png')||bytes.length<24||bytes.subarray(0,8).toString('hex')!=='89504e470d0a1a0a'||bytes.readUInt32BE(16)!==192||bytes.readUInt32BE(20)!==192)throw new Error('Invalid social PNG');continue;}
     const body=await response.text();
+    if(route==='/brand/site-icon.svg'){if(!response.headers.get('content-type')?.includes('image/svg+xml')||!body.includes('<svg'))throw new Error('Invalid browser icon');continue;}
     if(route==='/api/health') {
       if(!response.headers.get('content-type')?.includes('application/json') || !response.headers.get('cache-control')?.includes('no-store'))throw new Error('Health must be uncached JSON');
       const data=JSON.parse(body);
@@ -36,6 +38,8 @@ export async function smoke({base,environment,revision,fetcher=fetch,local=false
       if(!response.headers.get('content-type')?.includes('text/html')||!body.includes('<html')||!body.includes('SkyNet'))throw new Error(`${route}: invalid page`);
       const locale=locales.find(l=>l!=='uk' && (route==='/'+l || route.startsWith('/'+l+'/'))) || 'uk';
       if(!body.includes('<html lang="'+locale+'"'))throw new Error(`${route}: wrong document language`);
+      const socialLocale={uk:'uk_UA',en:'en_GB',de:'de_DE',pl:'pl_PL',fr:'fr_FR'}[locale];
+      for(const tag of [`<meta property="og:locale" content="${socialLocale}"`,`<meta property="og:url" content="${expectedOrigin}${route}"`,`<meta property="og:image" content="${expectedOrigin}/brandmark"`,`<meta name="twitter:card" content="summary"`])if(!body.includes(tag))throw new Error(`${route}: missing social preview metadata`);
       if(!body.includes(`<link rel="canonical" href="${expectedOrigin}${route}"`))throw new Error(`${route}: wrong canonical URL`);
       const suffix=route.endsWith('/crowdfunding')?'/crowdfunding':route.endsWith('/investors')?'/investors':'/';
       for(const language of [...locales,'x-default']){const prefix=language==='uk'||language==='x-default'?'':'/'+language;const path=prefix+(suffix==='/'?(prefix?'':'/'):suffix);if(!body.includes(`hrefLang="${language}" href="${expectedOrigin}${path}"`))throw new Error(`${route}: missing language alternate ${language}`);}

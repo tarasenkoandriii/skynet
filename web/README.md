@@ -25,3 +25,5 @@ Live release evidence is recorded by the deployment operator.
 The historical Stage 18 npm/build gap is not considered closed without actual successful execution.
 
 Translations live in `content/locales/{uk,en,de,pl,fr}.json`, with English message keys. Shared page components preserve the selected language across navigation. Per-language HTML, canonical URLs, hreflang and a 15-URL Production sitemap are tested; Preview remains protected and unindexed. No browser-language redirect overrides the Ukrainian default.
+
+Social link previews use localized Open Graph/Twitter titles and descriptions with the 192px graphite/green acoustic-ring brandmark. Browser SVG and Apple PNG icons use the same ring motif. The inherited App Icon mockup is not used. No new external image host or tracking request is introduced.
