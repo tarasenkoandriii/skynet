@@ -163,5 +163,8 @@
   "pilot2Title": "Un protocole d’évaluation mesurable",
   "pilot2Body": "Définir les jeux de données, les conditions sonores, les mesures de fausses alertes et les critères d’acceptation avant les essais ; conserver aussi les résultats qui contredisent l’hypothèse.",
   "pilot3Title": "Autorisations et responsabilités",
-  "pilot3Body": "Avant tout essai sur le terrain, confirmer le lieu, les procédures de sécurité, le traitement des données, les responsables et les autorisations juridiques nécessaires."
+  "pilot3Body": "Avant tout essai sur le terrain, confirmer le lieu, les procédures de sécurité, le traitement des données, les responsables et les autorisations juridiques nécessaires.",
+  "conceptIllustrationNote": "Illustration conceptuelle · ni photographie du prototype ni résultats de mesure.",
+  "nodeIllustrationAlt": "Concept artistique d’un nœud acoustique entouré d’ondes lumineuses sur fond sombre.",
+  "signalIllustrationAlt": "Signal acoustique abstrait représenté par des filaments lumineux verts et turquoise."
 }

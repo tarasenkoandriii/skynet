@@ -163,5 +163,8 @@
   "pilot2Title": "A measurable evaluation protocol",
   "pilot2Body": "Define datasets, noise conditions, false-positive measurements and acceptance criteria before testing; retain results that challenge the hypothesis.",
   "pilot3Title": "Permission and responsibility",
-  "pilot3Body": "Confirm the test location, safety procedures, data handling, responsible parties and necessary legal permissions before any field activity."
+  "pilot3Body": "Confirm the test location, safety procedures, data handling, responsible parties and necessary legal permissions before any field activity.",
+  "conceptIllustrationNote": "Concept illustration · not a prototype photograph or measured results.",
+  "nodeIllustrationAlt": "An artistic acoustic-node concept with luminous waves against a dark background.",
+  "signalIllustrationAlt": "An abstract acoustic signal visualized as green and cyan light filaments."
 }
