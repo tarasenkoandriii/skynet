@@ -63,3 +63,18 @@ section{padding-block:72px}
 .hero-mobile-art .hero-brief-content{order:3;min-width:0;padding:24px;background:var(--panel);border:1px solid var(--line);border-radius:16px}
 .hero-mobile-art .hero-status{margin-bottom:0}
 }
+
+/* Compact stage hierarchy and stable disclosure alignment on phones. */
+@media(max-width:760px){
+.roadmap li{display:grid;grid-template-columns:32px minmax(0,1fr);gap:10px 16px;padding:24px 20px}
+.roadmap .step-number{grid-column:1;grid-row:1 / span 3;font-size:22px;line-height:1.5;margin:0;letter-spacing:-.04em}
+.roadmap li>.tag,.roadmap li>h3,.roadmap li>p{grid-column:2;min-width:0}
+.roadmap li>.tag{justify-self:start;max-width:100%}
+.roadmap h3{margin:0;font-size:22px;line-height:1.35}
+.roadmap p{line-height:1.75}
+.faq details,.faq details[open]{padding:18px 14px}
+.faq summary{padding-right:0;min-height:48px}
+.faq p{margin-top:14px;line-height:1.8}
+.support-card .share-control>.btn{width:100%}
+.support-card .text-link{min-height:48px;display:flex;align-items:center;gap:12px}
+}
