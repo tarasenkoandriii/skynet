@@ -51,3 +51,15 @@ section{padding-block:72px}
 .illustrated-brief dl{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));column-gap:24px}
 .illustrated-brief dd{font-size:14px}
 @media(max-width:760px){.concept-illustration figcaption{padding:10px 14px}.illustrated-brief dl{gap:0 16px}.illustrated-brief dt{font-size:11px}}
+
+/* Keep one illustration per page; bring it beneath the heading on phones. */
+@media(max-width:760px){
+.hero-mobile-art{gap:20px}
+.hero-mobile-art .hero-copy,.hero-mobile-art>.brief-panel{display:contents}
+.hero-mobile-art .hero-heading{order:0}
+.hero-mobile-art .concept-illustration{order:1;margin:0;border-radius:12px}
+.hero-mobile-art .hero-details{order:2;min-width:0}
+.hero-mobile-art .hero-details>.lead{margin-top:0}
+.hero-mobile-art .hero-brief-content{order:3;min-width:0;padding:24px;background:var(--panel);border:1px solid var(--line);border-radius:16px}
+.hero-mobile-art .hero-status{margin-bottom:0}
+}
