@@ -92,3 +92,35 @@ Public repository: https://github.com/tarasenkoandriii/skynet . Production branc
 Ukrainian is the unprefixed default. EN/DE/PL/FR have explicit URL prefixes; language selection preserves the current landing. English message keys are shared across all five catalogues. Review copy changes together across languages, including legal/payment notices. Translation tests reject missing, empty or extra keys and Ukrainian text in foreign catalogues. Do not enable transactions as part of a translation/design release.
 
 Social-preview acceptance checks localized Open Graph locale/canonical image tags, Twitter summary card, the browser SVG and the 192px PNG brandmark. The smoke suite now covers 24 routes; previews require a fresh crawl by each external platform, whose cache timing is not controlled by this release.
+
+## Recovery when an automatic main trigger is missing
+
+Do not equate a successful PR Preview with a Production release. First confirm the merged full SHA, inspect Actions runs for that exact SHA and event, and inspect Vercel deployments for that SHA and `production` target. Check that Actions is enabled, workflow path filters match changed files, the commit has no skip directive, and the Vercel Git connection still names the intended repository and production branch. Record what is observed; do not infer a root cause from the absence of an event.
+
+If the automatic run is absent, an authorized release operator may dispatch the existing workflow on `main`:
+
+```sh
+gh workflow run web-release-gate.yml --ref main
+```
+
+Record the dispatched run's full SHA and require both environments to pass. If main advances, repeat acceptance for the new exact revision. Never claim an older green run validates the merged revision.
+
+For a missing Vercel trigger, after PR acceptance and exact-revision CI, the operator may request a fresh Production build from the existing Git connection through `POST /v13/deployments`. Save the request as a JSON file; use the authenticated CLI's existing session, without extracting credentials. The request must name the existing project and repository IDs, `target: production`, and `gitSource` with `type: github`, `ref: main` and the exact accepted `sha`. Do not override project settings, system environment variables or the Production matrix. Do not promote the Preview artifact as a substitute.
+
+```json
+{
+  "name": "EXISTING_PROJECT_NAME",
+  "project": "EXISTING_PROJECT_ID",
+  "target": "production",
+  "gitSource": {
+    "type": "github",
+    "repoId": 123456789,
+    "ref": "main",
+    "sha": "EXACT_ACCEPTED_FULL_SHA"
+  }
+}
+```
+
+Use actual verified values, not these placeholders. Run the CLI in the linked team's scope. Before requesting a build, recheck that main still matches the accepted SHA and that no same-SHA Production build is already active or Ready; avoid duplicate releases. Wait for Ready, verify the deployment's source SHA and canonical-domain assignment, run Production smoke on that SHA, inspect both optimized illustration images in a browser, and record the deployment ID, CI event/run, fallback reason and previous known-good rollback target. Keep temporary test access revoked and excluded from records.
+
+A successful manual recovery does not prove automatic triggers are repaired. Verify the next reviewed change through the normal PR/main path, recording a `push` Actions event and a Production Git deployment for the new SHA. If no automatic event appears again, keep the cause unresolved and use the audited recovery procedure; do not weaken branch protection or Preview authentication.
