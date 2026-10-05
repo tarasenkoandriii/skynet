@@ -39,7 +39,7 @@ After Preview is Ready, test the exact domain and expected Git commit:
 npm run smoke -- https://your-preview-domain preview EXPECTED_FULL_GIT_SHA
 ```
 
-For protected Preview, supply `VERCEL_AUTOMATION_BYPASS_SECRET` via your secret manager in the process environment. Never put it in the URL or command argument. Smoke refuses redirects/auth pages, insecure remote HTTP, wrong revisions and unsafe payment/QR state. Do not disable protection to make a test pass. Check `/`, `/crowdfunding`, `/investors` visually on desktop/mobile, payment disabled notice, navigation, branding and absence of transaction controls. Automated smoke also checks health, robots, sitemap and inactive checkout/payment routes.
+For protected Preview, supply `VERCEL_AUTOMATION_BYPASS_SECRET` via your secret manager in the process environment. Never put it in the URL or command argument. Smoke refuses redirects/auth pages, insecure remote HTTP, wrong revisions and unsafe payment/QR state. Do not disable protection to make a test pass. Check the three Ukrainian pages and `/en`, `/de`, `/pl`, `/fr` versions of each visually on desktop/mobile, payment disabled notice, navigation, branding and absence of transaction controls. Automated smoke checks all 15 pages, their document languages and translated payment notices, health, robots, the 15-URL Production sitemap (empty in Preview), and inactive checkout/payment/Russian routes.
 
 ## Production release
 
@@ -86,3 +86,7 @@ For a release without a Git repository, set `RELEASE_REVISION` explicitly at bot
 For a first real rollback drill, create and live-test informational baseline A, then create and live-test informational candidate B with a different RELEASE_REVISION. Roll back to A, verify the production alias and re-run smoke expecting A's revision. Both artifacts must keep transactions locked. A successful drill leaves the verified baseline serving production; no intentionally unsafe deployment is needed.
 
 Public repository: https://github.com/tarasenkoandriii/skynet . Production branch: main. Vercel project Root Directory: web. Runtime: Node 24.x. Public production origin: https://narodne-ppo-skynet.vercel.app .
+
+## Multilingual landing release
+
+Ukrainian is the unprefixed default. EN/DE/PL/FR have explicit URL prefixes; language selection preserves the current landing. English message keys are shared across all five catalogues. Review copy changes together across languages, including legal/payment notices. Translation tests reject missing, empty or extra keys and Ukrainian text in foreign catalogues. Do not enable transactions as part of a translation/design release.
